@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .card { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; }
+        button { background-color: #4CAF50; color: white; border: none; padding: 10px; border-radius: 4px; }
+        pre { background-color: #f5f5f5; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>API Test</h1>
+    
+    <div class="card">
+        <h3>Futures Coin Listesi</h3>
+        <button id="testFuturesButton">Test Et</button>
+        <div style="margin-top: 10px;">
+            <pre id="futuresOutput">Henüz test edilmedi</pre>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h3>Analiz Endpoint</h3>
+        <button id="testAnalyzeButton">Test Et</button>
+        <div style="margin-top: 10px;">
+            <pre id="analyzeOutput">Henüz test edilmedi</pre>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('testFuturesButton').addEventListener('click', async function() {
+            const output = document.getElementById('futuresOutput');
+            output.textContent = 'Test ediliyor...';
+            
+            try {
+                const response = await fetch('/api/futures-coins');
+                const data = await response.json();
+                output.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                output.textContent = `Hata: ${error.message}`;
+            }
+        });
+        
+        document.getElementById('testAnalyzeButton').addEventListener('click', async function() {
+            const output = document.getElementById('analyzeOutput');
+            output.textContent = 'Test ediliyor...';
+            
+            try {
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ coins: ['BTCUSDT', 'ETHUSDT'] })
+                });
+                
+                const data = await response.json();
+                output.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                output.textContent = `Hata: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

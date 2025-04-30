@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+select {
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.badge {
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.bg-success {
+    background-color: #28a745;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+}
+
+.bg-secondary {
+    background-color: #6c757d;
+}
+
+td img {
+    vertical-align: middle;
+}
+
+.indicator {
+    display: block !important;
+    visibility: visible !important;
+}
