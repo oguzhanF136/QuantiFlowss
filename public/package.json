@@ -1,6 +1,6 @@
 {
   "name": "crypto-dashboard",
-  "version": "1.0.0",
+  "version": "1.0.0"
   "description": "A cryptocurrency dashboard with technical analysis indicators.",
   "main": "index.js",
   "type": "module",
